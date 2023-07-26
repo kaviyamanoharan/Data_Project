@@ -26,6 +26,55 @@ mysql> show tables;
 +----------------------+
 3 rows in set (0.00 sec)
 
+mysql> load data local infile '/home/training/Downloads/purchase_data.csv'
+    -> into table purchase
+    -> fields terminated by ','
+    -> enclosed by '"'
+    -> lines terminated by '\n'
+    -> ignore 1 lines;
+Query OK, 5 rows affected (0.15 sec)
+Records: 5  Deleted: 0  Skipped: 0  Warnings: 0
+
+mysql> load data local infile '/home/training/Downloads/customer_data.csv'
+    -> into table customer
+    -> fields terminated by ','
+    -> enclosed by '"'
+    -> lines terminated by '\n'
+    -> ignore 1 lines;
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Deleted: 0  Skipped: 0  Warnings: 0
+mysql> load data local infile '/home/training/Downloads/clickstream.csv'
+    -> into table clickstreamdata
+    -> fields terminated by ','
+    -> enclosed by '"'
+    -> lines terminated by '\n'
+    -> ignore 1 lines;
+Query OK, 13 rows affected (0.00 sec)
+Records: 13  Deleted: 0  Skipped: 0  Warnings: 0
+
+
+mysql> select * from clickstreamdata;
++--------+---------------------+----------------+
+| userid | timestamp           | page           |
++--------+---------------------+----------------+
+      |1 | 2023-01-01 10:00:00 | homepage
+  |    1 | 2023-01-01 10:01:00 | product_page
+      |2 | 2023-01-01 10:02:00 | homepage
+     | 2 | 2023-01-01 10:03:00 | cart_page
+      |3 | 2023-01-01 10:05:00 | homepage
+  |    3 | 2023-01-01 10:06:00 | product_page
+     | 3 | 2023-01-01 10:07:00 | cart_page
+      |4 | 2023-01-01 10:09:00 | homepage
+  |    4 | 2023-01-01 10:10:00 | product_page
+     | 4 | 2023-01-01 10:11:00 | cart_page
+ |     4 | 2023-01-01 10:12:00 | checkout_page
+      |5 | 2023-01-01 10:15:00 | homepage
+  |    5 | 2023-01-01 10:16:00 | product_page
++--------+---------------------+----------------+
+13 rows in set (0.00 sec)
+
+
+
 mysql> select * from purchase;
 +--------+---------------------+--------+
 | userid | timestamp           | amount |
@@ -50,25 +99,6 @@ mysql> select * from customer;
 +--------+----------------+-----------------------------+
 5 rows in set (0.01 sec)
 
-mysql> select * from clickstreamdata;
-+--------+---------------------+----------------+
-| userid | timestamp           | page           |
-+--------+---------------------+----------------+
-      |1 | 2023-01-01 10:00:00 | homepage
-  |    1 | 2023-01-01 10:01:00 | product_page
-      |2 | 2023-01-01 10:02:00 | homepage
-     | 2 | 2023-01-01 10:03:00 | cart_page
-      |3 | 2023-01-01 10:05:00 | homepage
-  |    3 | 2023-01-01 10:06:00 | product_page
-     | 3 | 2023-01-01 10:07:00 | cart_page
-      |4 | 2023-01-01 10:09:00 | homepage
-  |    4 | 2023-01-01 10:10:00 | product_page
-     | 4 | 2023-01-01 10:11:00 | cart_page
- |     4 | 2023-01-01 10:12:00 | checkout_page
-      |5 | 2023-01-01 10:15:00 | homepage
-  |    5 | 2023-01-01 10:16:00 | product_page
-+--------+---------------------+----------------+
-13 rows in set (0.00 sec)
 
 mysql> 
 
